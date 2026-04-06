@@ -4,7 +4,7 @@
  * POI 搜索脚本
  * 使用方法:
  * node scripts/poi-search.js --keywords=肯德基 --city=北京
- * 或设置环境变量: AMAP_KEY=your_key node scripts/poi-search.js --keywords=肯德基
+ * 或设置环境变量: AMAP_WEBSERVICE_KEY=your_key node scripts/poi-search.js --keywords=肯德基
  */
 
 const { searchPOI } = require('../index');
@@ -35,11 +35,11 @@ async function main() {
     process.exit(1);
   }
   
-  // 检查是否设置了 AMAP_KEY
-  if (!process.env.AMAP_KEY) {
-    console.error('❌ 请设置环境变量 AMAP_KEY');
+  // 检查是否设置了 AMAP_WEBSERVICE_KEY
+  if (!process.env.AMAP_WEBSERVICE_KEY) {
+    console.error('❌ 请设置环境变量 AMAP_WEBSERVICE_KEY');
     console.log('\n示例:');
-    console.log('export AMAP_KEY=your_amap_key');
+    console.log('export AMAP_WEBSERVICE_KEY=your_amap_key');
     console.log('node scripts/poi-search.js --keywords=美食 --location=116.397428,39.90923 --radius=1000');
     process.exit(1);
   }
