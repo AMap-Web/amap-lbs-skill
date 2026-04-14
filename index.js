@@ -94,7 +94,8 @@ async function searchPOI(params) {
     keywords: params.keywords || '',
     region: params.city || '',
     city_limit: params.cityLimit !== false,
-    ...params
+    ...params,
+    appname: 'amap-lbs-skill',
   };
   
   try {
@@ -128,7 +129,8 @@ async function walkingRoute(params) {
   const requestParams = {
     key: key,
     origin: params.origin,
-    destination: params.destination
+    destination: params.destination,
+    appname: 'amap-lbs-skill',
   };
   
   try {
@@ -166,7 +168,8 @@ async function drivingRoute(params) {
     origin: params.origin,
     destination: params.destination,
     strategy: params.strategy || 10,
-    extensions: 'base'
+    extensions: 'base',
+    appname: 'amap-lbs-skill',
   };
   
   if (params.waypoints) {
@@ -204,7 +207,8 @@ async function ridingRoute(params) {
   const requestParams = {
     key: key,
     origin: params.origin,
-    destination: params.destination
+    destination: params.destination,
+    appname: 'amap-lbs-skill',
   };
   
   try {
@@ -244,7 +248,8 @@ async function transitRoute(params) {
     destination: params.destination,
     city: params.city,
     strategy: params.strategy || 0,
-    nightflag: params.nightflag ? 1 : 0
+    nightflag: params.nightflag ? 1 : 0,
+    appname: 'amap-lbs-skill',
   };
   
   try {
