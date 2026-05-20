@@ -56,7 +56,7 @@ function setWebServiceKey(key) {
  */
 async function ensureWebServiceKey() {
   // 优先从环境变量读取
-  let key = process.env.AMAP_KEY || process.env.AMAP_WEBSERVICE_KEY;
+  let key = process.env.AMAP_WEBSERVICE_KEY;
   
   if (!key) {
     // 尝试从配置文件读取
@@ -67,7 +67,7 @@ async function ensureWebServiceKey() {
     console.log('\n⚠️  未找到高德 Web Service Key');
     console.log('请访问以下地址创建应用并获取 Key:');
     console.log('https://lbs.amap.com/api/webservice/create-project-and-key\n');
-    throw new Error('请设置环境变量 AMAP_KEY 或提供高德 Web Service Key');
+    throw new Error('请设置环境变量 AMAP_WEBSERVICE_KEY 或提供高德 Web Service Key');
   }
   
   return key;
