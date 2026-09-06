@@ -7,7 +7,7 @@
  * 或设置环境变量: AMAP_KEY=your_key node scripts/poi-search.js --keywords=肯德基
  */
 
-const { searchPOI } = require('../index');
+const { searchPOI, getWebServiceKey } = require('../index');
 
 // 解析命令行参数
 function parseArgs() {
@@ -35,12 +35,14 @@ async function main() {
     process.exit(1);
   }
   
-  // 检查是否设置了 AMAP_KEY
-  if (!process.env.AMAP_KEY) {
-    console.error('❌ 请设置环境变量 AMAP_KEY');
+  // Key 优先级：环境变量 AMAP_KEY / AMAP_WEBSERVICE_KEY，其次 config.json (webServiceKey)
+  const key = process.env.AMAP_KEY || process.env.AMAP_WEBSERVICE_KEY;
+  if (!key && !getWebServiceKey()) {
+    console.error('❌ 未找到高德 Web Service Key');
     console.log('\n示例:');
     console.log('export AMAP_KEY=your_amap_key');
     console.log('node scripts/poi-search.js --keywords=美食 --location=116.397428,39.90923 --radius=1000');
+    console.log('或编辑 config.json 填入 {"webServiceKey": "your_key"}');
     process.exit(1);
   }
   
